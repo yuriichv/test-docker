@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: test-docker-service
+spec:
+  selector:
+    app: test-docker
+  ports:
+    - protocol: TCP
+      port: 38080         #выставит этот порт (внешне будет виден другой - который выставит kube-proxy
+      targetPort: 38080   #редирект к порту пода
+  type: NodePort

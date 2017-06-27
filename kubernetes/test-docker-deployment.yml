@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test-docker
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: test-docker
+    spec:
+      containers:
+      - name: test-docker
+        image: cinimex/testdocker:latest
+        ports:
+        - containerPort: 38080
+#      imagePullSecrets:
+#      - name: registrypullsecret

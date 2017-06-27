@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build: .          #расположение Dockerfile
+    container_name: testDockerHello
+    ports:
+     - "38080:38080"  #local:remote
+    volumes:
+     - ./target:/apps
+#   command: /opt/java/bin/java -jar /apps/testSpring-1.0-SNAPSHOT.jar # обычно задается в ENTRYPOINT image(Dockerfile)
+#  redis:              # другие сервисы из других образов
+#    image: "yurii:testDockerHello"

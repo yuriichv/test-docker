@@ -1,0 +1,10 @@
+spring:
+  main:
+    sources: ru.local.TestDockerApp
+camel:
+  springboot:
+    name: testDocker
+
+application:
+  host: 0.0.0.0
+  port: 38080
