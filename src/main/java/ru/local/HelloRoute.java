@@ -25,7 +25,8 @@ public class HelloRoute extends RouteBuilder {
 
         from("direct:hello")
                 .setHeader(Exchange.CONTENT_TYPE, constant("text/html"))
-                .setBody(simple("<H1>Hello ${header.text}</H1>"));
+              //  .setBody(simple("<H1>Hello ${header.text}</H1>"))
+                .process("transformProcessor");
 
 
     }

@@ -1,0 +1,20 @@
+FROM maven:3.3.3-jdk-8 as builder
+ENV BUILD_HOME=/tmp/build
+RUN mkdir -p $BUILD_HOME
+WORKDIR $BUILD_HOME
+# selectively add the POM file
+COPY pom.xml $BUILD_HOME
+# get all the downloads out of the way - как-то не особо работает.
+RUN mvn verify clean --fail-never
+COPY . $BUILD_HOME
+RUN mvn verify
+
+
+FROM anapsix/alpine-java
+ENV APP_HOME=/home/app
+RUN addgroup app -S && adduser -S -G app -h $APP_HOME app
+USER app
+WORKDIR $APP_HOME
+COPY --from=builder /tmp/build/target/testDockerHello-1.0.jar .
+EXPOSE 38080
+ENTRYPOINT ["/bin/bash", "-c", "java -jar testDockerHello-1.0.jar"]
