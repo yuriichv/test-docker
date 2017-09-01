@@ -21,7 +21,7 @@ public class TransformProcessor implements Processor {
         Message message = exchange.getIn();
         Map<String,Object> hdrs = message.getHeaders();
         for (Map.Entry<String, Object> hdr: hdrs.entrySet())
-            body = body.concat(hdr.getKey()+"= "+hdr.getValue()+"\n");
+            body = body.concat("<b>"+hdr.getKey()+"</b>"+"= "+hdr.getValue()+"<br>"+"\n");
         message.setBody(body);
         exchange.setIn(message);
     }
