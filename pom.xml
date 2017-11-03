@@ -14,6 +14,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <docker.image.prefix>yuriichv</docker.image.prefix>
+    
+   <maven.wagon.http.ssl.insecure>true</maven.wagon.http.ssl.insecure>
+   <maven.wagon.http.ssl.allowall>true</maven.wagon.http.ssl.allowall>
+   <maven.wagon.http.ssl.ignore.validity.dates>true</maven.wagon.http.ssl.ignore.validity.dates>
   </properties>
 
   <dependencyManagement>
